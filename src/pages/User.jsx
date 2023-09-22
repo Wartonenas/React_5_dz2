@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
+import '../css/User.css'
 import axios from 'axios';
 
 const User = () => {
 	const [user, setUser] = useState([]);
-	const [post, setPost] = useState([]);
-	const [todo, setTodo] = useState([]);
+	const [info, setInfo] = useState([]);
 	const [searchParams, setSearchParams] = useSearchParams();
 	const { id } = useParams()
 
@@ -16,29 +16,37 @@ const User = () => {
 
 	const handlePosts = (id) => {
 		setSearchParams({ tab: "posts" });
-		axios.get(`https://dummyjson.com/posts/${id}`)
-			.then((resp) => setPost(resp.data));
+		axios.get(`https://dummyjson.com/users/${id}/posts`)
+			.then((resp) => setInfo(resp.data.posts));
 	};
 
 	const handleTodos = (id) => {
 		setSearchParams({ tab: "todos" });
-		axios.get(`https://dummyjson.com/todos/${id}`)
-			.then((resp) => setTodo(resp.data));
+		axios.get(`https://dummyjson.com/users/${id}/todos`)
+			.then((resp) => setInfo(resp.data.todos));
 	};
 
 	return (
 		<div>
 			<h1>User</h1>
 			<h4>{user.firstName} {user.lastName}</h4>
-			<p>{user.age} Лет</p>
-			<div key={id} onClick={() => handlePosts(id)}>
-				Посты
-				<h5>{post.title}</h5>
-				<p>{post.body}</p>
+			<p>Лет: {user.age}</p>
+			<div key={info.id} onClick={() => handlePosts(id)} className='post'>
+				<h4 className='info'>Посты</h4>
+				{info.map(post => (
+					<div key={post.id}>
+						<p>{post.title}</p>
+						<p>{post.body}</p>
+					</div>
+				))}
 			</div>
-			<div key={id} onClick={() => handleTodos(id)}>
-				Список дел
-				<h5>{todo.todo}</h5>
+			<div key={id} onClick={() => handleTodos(id)} className='todo'>
+				<h4 className='info'>Список дел</h4>
+				{info.map(todo => (
+					<div key={todo.id}>
+						<h5>{todo.todo}</h5>
+					</div>
+				))}
 			</div>
 		</div>
 	);

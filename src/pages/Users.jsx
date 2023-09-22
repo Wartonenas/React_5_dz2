@@ -7,7 +7,7 @@ const Users = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('https://dummyjson.com/users');
+      const response = await axios.get('https://dummyjson.com/users?limit=100');
     setUsers(response.data.users);
     } catch (error) {
       console.log(error);
@@ -23,7 +23,7 @@ const Users = () => {
       <h1>Users</h1>
       {users.map(users => (
 				<Link key={users.id} to={`/users/${users.id}`}>
-					<p>{users.firstName} {users.lastName }</p>
+					<p>User {users.id}</p>
         </Link>
       ))}
     </div>

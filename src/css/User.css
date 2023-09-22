@@ -1,0 +1,19 @@
+.info{
+	cursor:pointer
+}
+
+.post {
+	background-color: red;
+}
+
+.todo {
+	background-color: blue;
+}
+
+.post p {
+	background-color: black;
+}
+
+.todo h5{
+	background-color: black;
+}
