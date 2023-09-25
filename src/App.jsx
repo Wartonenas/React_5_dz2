@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import CreatePost from './pages/CreatePost';
 import Users from './pages/Users'
 import User from './pages/User'
+import Products from "./pages/Products"
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
 				<Route path="/create" element={<CreatePost />} />
 				<Route path='/users' element={<Users />} />
 				<Route path='/users/:id' element={<User />} />
+				<Route path='/products' element={<Products />} />
 				<Route path="*" element={<h2>Page not Found</h2>} />
 			</Routes>
 			<Layout />

@@ -1,0 +1,15 @@
+.cart-products {
+	display: flex;
+	align-items: flex-start;
+	flex-flow: row wrap;
+}
+.cart-product {
+	height: 215px;
+	width: 215px;
+	border: 2px blueviolet solid;
+	margin: 2.5px;
+}
+.cart-product button{
+	width: 215px;
+	height: 25%;
+}
