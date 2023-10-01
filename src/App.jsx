@@ -5,6 +5,7 @@ import CreatePost from './pages/CreatePost';
 import Users from './pages/Users'
 import User from './pages/User'
 import Products from "./pages/Products"
+import Buscket from './pages/Buscket';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
 				<Route path='/users' element={<Users />} />
 				<Route path='/users/:id' element={<User />} />
 				<Route path='/products' element={<Products />} />
+				<Route path='/buscket' element={<Buscket/> } />
 				<Route path="*" element={<h2>Page not Found</h2>} />
 			</Routes>
 			<Layout />
